@@ -1,0 +1,51 @@
+<body>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		textarea {
+			display: block;
+			margin: 50px auto;
+			padding-left: 0;
+			width: 400px;
+			height: 150px;
+			;
+			line-height: 30px;
+			font-size: 20px;
+			font-weight: normal;
+			text-align: left;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), 0 0 40px 2px rgba(0, 0, 0, 0.25) inset;
+		}
+	</style>
+	<textarea>江湖笑恩怨了 人过招笑藏刀 红尘笑笑寂寥 心太高到不了 明月照路迢迢 人会老心不老 爱不到放不掉 忘不了你的好 看似花非花雾非雾 滔滔江水留不住</textarea>
+</body>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$.fn.extend({
+		stepValue: function (option) {
+			var option = $.extend({
+				fq: 250
+			}, option);
+			var that = this,
+				index = 0,
+				val = that.val().split(""),
+				length = val.length;
+			that.val("");
+			that.focus();
+			var timer = setInterval(function () {
+				if (index >= length) {
+					clearInterval(timer);
+					return false;
+				};
+				that.val($("textarea").val() + val[index]);
+				index++;
+			}, option.fq);
+		}
+	});
+	$("textarea").stepValue({
+		fq: 100
+	});
+</script>
